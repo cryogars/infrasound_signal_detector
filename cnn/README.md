@@ -7,6 +7,7 @@ For reproducbility, follow the steps below:
 ## Files in This Directory
 
 - `tuning_engine_cnn.py`: A script for performing hyperparameter search using Optuna.
+- `cnn.py`: Model architecture
 - `train_cnn.py`: A script for training a CNN using the hyperparameters found.
 ---
 

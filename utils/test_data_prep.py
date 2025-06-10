@@ -22,6 +22,7 @@ from utils import config
 from utils.helpers import get_logger
 logger = get_logger(__file__)
 
+logger_h = logger
 
 def prep_other_sensor(the_station, the_sensor) -> None:
     this_happy_path = f"{config.PROCESSED_DATA}/two_high_signal"
@@ -135,40 +136,40 @@ if __name__ == "__main__":
     ## TRANSPORTABILITY DATA FOR TEMPORAL MODEL
     ############################################################################################
 
-    # logger.info(f"Begin First Ten")
-    # df_path_f10 = Path(f"{config.PROCESSED_DATA}/first_ten/first_ten_test.parquet")
-    # df_f10 = pd.read_parquet(df_path_f10)
-    # data_f10 = create_test(df_f10)
-    #
-    # logger_h.info(f"Begin x_test")
-    # data_f10.x_test.to_parquet(
-    #     f"{config.PROCESSED_DATA}/first_ten/x_true_test_ds.parquet",
-    #     compression="gzip",
-    # )
-    #
-    # logger.info(f"Begin y_test")
-    # data_f10.y_test.to_parquet(
-    #     f"{config.PROCESSED_DATA}/first_ten/y_true_test_ds.parquet",
-    #     compression="gzip",
-    # )
+    logger.info(f"Begin First Ten")
+    df_path_f10 = Path(f"{config.PROCESSED_DATA}/first_ten/first_ten_test.parquet")
+    df_f10 = pd.read_parquet(df_path_f10)
+    data_f10 = create_test(df_f10)
+
+    logger_h.info(f"Begin x_test")
+    data_f10.x_test.to_parquet(
+        f"{config.PROCESSED_DATA}/first_ten/x_true_test_ds.parquet",
+        compression="gzip",
+    )
+
+    logger.info(f"Begin y_test")
+    data_f10.y_test.to_parquet(
+        f"{config.PROCESSED_DATA}/first_ten/y_true_test_ds.parquet",
+        compression="gzip",
+    )
 
     ############################################################################################
     ## TRANSPORTABILITY DATA FOR SENSOR METEOROLOGICAL MODEL
     ############################################################################################
 
-    # logger.info(f"Begin Even Odd")
-    # df_path = Path(f"{config.PROCESSED_DATA}/even_odd/even_odd_test.parquet")
-    # df = pd.read_parquet(df_path)
-    # data = create_test(df)
-    #
-    # logger_h.info(f"Begin x_test")
-    # data.x_test.to_parquet(
-    #     f"{config.PROCESSED_DATA}/even_odd/x_true_test_ds.parquet",
-    #     compression="gzip",
-    # )
-    #
-    # logger_h.info(f"Begin y_test")
-    # data.y_test.to_parquet(
-    #     f"{config.PROCESSED_DATA}/even_odd/y_true_test_ds.parquet",
-    #     compression="gzip",
-    # )
+    logger.info(f"Begin Even Odd")
+    df_path = Path(f"{config.PROCESSED_DATA}/even_odd/even_odd_test.parquet")
+    df = pd.read_parquet(df_path)
+    data = create_test(df)
+
+    logger_h.info(f"Begin x_test")
+    data.x_test.to_parquet(
+        f"{config.PROCESSED_DATA}/even_odd/x_true_test_ds.parquet",
+        compression="gzip",
+    )
+
+    logger_h.info(f"Begin y_test")
+    data.y_test.to_parquet(
+        f"{config.PROCESSED_DATA}/even_odd/y_true_test_ds.parquet",
+        compression="gzip",
+    )
