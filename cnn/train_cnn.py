@@ -136,92 +136,92 @@ if __name__ == "__main__":
     # ############################################################################
     # ## SENSOR SENSITIVE MODEL
     # ############################################################################
-    # logger.info(f"Training Sensor Agnostic Sensor Case")
-    #
-    # temporal_isd = InfrasoundDataset(
-    #     labels_file=f"{config.PROCESSED_DATA}/two_high_signal/high_signal_y_train_.parquet",
-    #     waveform_file=f"{config.PROCESSED_DATA}/two_high_signal/high_signal_X_train_.parquet",
-    #     transformation=config.TRANSFORMATION,
-    #     target_sample_rate=config.SAMPLE_RATE,
-    #     num_samples=config.NUM_SAMPLES,
-    # )
-    # train_dataloader = create_data_loader(temporal_isd, config.BATCH_SIZE)
-    #
-    # sensor_model = CNNNetwork().to(config.DEVICE)
-    # logger.info(sensor_model)
-    # loss_fn = nn.CrossEntropyLoss()  # initialise loss function
-    # sensor_optimizer = torch.optim.Adam(
-    #     sensor_model.parameters(), lr=config.SENSOR_LEARNING_RATE
-    # )  # initialise optimizer
-    #
-    # # train model
-    # train(
-    #     model=sensor_model,
-    #     data_loader=train_dataloader,
-    #     _loss_fn=loss_fn,
-    #     _optimizer=sensor_optimizer,
-    #     epochs=config.EPOCHS,
-    #     model_save_name="sensor_model"
-    # )
+    logger.info(f"Training Sensor Agnostic Sensor Case")
+
+    temporal_isd = InfrasoundDataset(
+        labels_file=f"{config.PROCESSED_DATA}/two_high_signal/high_signal_y_train_.parquet",
+        waveform_file=f"{config.PROCESSED_DATA}/two_high_signal/high_signal_X_train_.parquet",
+        transformation=config.TRANSFORMATION,
+        target_sample_rate=config.SAMPLE_RATE,
+        num_samples=config.NUM_SAMPLES,
+    )
+    train_dataloader = create_data_loader(temporal_isd, config.BATCH_SIZE)
+
+    sensor_model = CNNNetwork().to(config.DEVICE)
+    logger.info(sensor_model)
+    loss_fn = nn.CrossEntropyLoss()  # initialise loss function
+    sensor_optimizer = torch.optim.Adam(
+        sensor_model.parameters(), lr=config.SENSOR_LEARNING_RATE
+    )  # initialise optimizer
+
+    # train model
+    train(
+        model=sensor_model,
+        data_loader=train_dataloader,
+        _loss_fn=loss_fn,
+        _optimizer=sensor_optimizer,
+        epochs=config.EPOCHS,
+        model_save_name="sensor_model"
+    )
 
     ############################################################################
     ## TEMPORAL SENSITIVE MODEL
     ############################################################################
-    # logger.info(f"Training Temporal Sensitive Sensor Case")
-    #
-    # temporal_isd = InfrasoundDataset(
-    #     labels_file=f"{config.PARENT_DIRECTORY}/data/processed/first_ten/y_train.parquet",
-    #     waveform_file=f"{config.PARENT_DIRECTORY}/data/processed/first_ten/x_train.parquet",
-    #     transformation=config.TRANSFORMATION,
-    #     target_sample_rate=config.SAMPLE_RATE,
-    #     num_samples=config.NUM_SAMPLES,
-    # )
-    # train_dataloader = create_data_loader(temporal_isd, config.BATCH_SIZE)
-    #
-    # temp_model = CNNNetworkTemporal().to(config.DEVICE)
-    # logger.info(temp_model)
-    # loss_fn = nn.CrossEntropyLoss()  # initialise loss function
-    # temp_optimizer = torch.optim.Adam(
-    #     temp_model.parameters(), lr=config.TEMP_LEARNING_RATE
-    # )  # initialise optimizer
-    #
-    # # train model
-    # train(
-    #     model=temp_model,
-    #     data_loader=train_dataloader,
-    #     _loss_fn=loss_fn,
-    #     _optimizer=temp_optimizer,
-    #     epochs=config.EPOCHS,
-    #     model_save_name="temporal_model"
-    # )
+    logger.info(f"Training Temporal Sensitive Sensor Case")
+
+    temporal_isd = InfrasoundDataset(
+        labels_file=f"{config.PARENT_DIRECTORY}/data/processed/first_ten/y_train.parquet",
+        waveform_file=f"{config.PARENT_DIRECTORY}/data/processed/first_ten/x_train.parquet",
+        transformation=config.TRANSFORMATION,
+        target_sample_rate=config.SAMPLE_RATE,
+        num_samples=config.NUM_SAMPLES,
+    )
+    train_dataloader = create_data_loader(temporal_isd, config.BATCH_SIZE)
+
+    temp_model = CNNNetworkTemporal().to(config.DEVICE)
+    logger.info(temp_model)
+    loss_fn = nn.CrossEntropyLoss()  # initialise loss function
+    temp_optimizer = torch.optim.Adam(
+        temp_model.parameters(), lr=config.TEMP_LEARNING_RATE
+    )  # initialise optimizer
+
+    # train model
+    train(
+        model=temp_model,
+        data_loader=train_dataloader,
+        _loss_fn=loss_fn,
+        _optimizer=temp_optimizer,
+        epochs=config.EPOCHS,
+        model_save_name="temporal_model"
+    )
 
     ############################################################################
     ## METEOROLOGICAL SENSITIVE MODEL
     ############################################################################
 
-    # logger.info(f"Training Meteorological Sensitive  Case")
-    # meteorological_isd = InfrasoundDataset(
-    #     labels_file=f"{config.PARENT_DIRECTORY}/data/processed/even_odd/y_train.parquet",
-    #     waveform_file=f"{config.PARENT_DIRECTORY}/data/processed/even_odd/x_train.parquet",
-    #     transformation=config.TRANSFORMATION,
-    #     target_sample_rate=config.SAMPLE_RATE,
-    #     num_samples=config.NUM_SAMPLES,
-    # )
-    # train_dataloader = create_data_loader(meteorological_isd, config.BATCH_SIZE)
-    #
-    # met_model = CNNNetworkMeteorological().to(config.DEVICE)
-    # logger.info(met_model)
-    # loss_fn = nn.CrossEntropyLoss()  # initialise loss function
-    # met_optimizer = torch.optim.Adam(
-    #     met_model.parameters(), lr=config.MET_LEARNING_RATE
-    # )  # initialise optimizer
-    #
-    # # train model
-    # train(
-    #     model=met_model,
-    #     data_loader=train_dataloader,
-    #     _loss_fn=loss_fn,
-    #     _optimizer=met_optimizer,
-    #     epochs=config.EPOCHS,
-    #     model_save_name="meteorological_model"
-    # )
+    logger.info(f"Training Meteorological Sensitive  Case")
+    meteorological_isd = InfrasoundDataset(
+        labels_file=f"{config.PARENT_DIRECTORY}/data/processed/even_odd/y_train.parquet",
+        waveform_file=f"{config.PARENT_DIRECTORY}/data/processed/even_odd/x_train.parquet",
+        transformation=config.TRANSFORMATION,
+        target_sample_rate=config.SAMPLE_RATE,
+        num_samples=config.NUM_SAMPLES,
+    )
+    train_dataloader = create_data_loader(meteorological_isd, config.BATCH_SIZE)
+
+    met_model = CNNNetworkMeteorological().to(config.DEVICE)
+    logger.info(met_model)
+    loss_fn = nn.CrossEntropyLoss()  # initialise loss function
+    met_optimizer = torch.optim.Adam(
+        met_model.parameters(), lr=config.MET_LEARNING_RATE
+    )  # initialise optimizer
+
+    # train model
+    train(
+        model=met_model,
+        data_loader=train_dataloader,
+        _loss_fn=loss_fn,
+        _optimizer=met_optimizer,
+        epochs=config.EPOCHS,
+        model_save_name="meteorological_model"
+    )

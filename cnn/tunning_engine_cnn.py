@@ -206,8 +206,8 @@ if __name__ == "__main__":
     #           test_feature_file=f"{config.PROCESSED_DATA}/two_high_signal/high_signal_X_test_.parquet",
     #           test_label_file=f"{config.PROCESSED_DATA}/two_high_signal/high_signal_y_test_.parquet",
     #           save_path="optuna_result_sensor")
-
-
+    #
+    #
     # run_study(train_feature_file=f"{config.PROCESSED_DATA}/first_ten/x_train.parquet",
     #           train_label_file=f"{config.PROCESSED_DATA}/first_ten/y_train.parquet",
     #           test_feature_file=f"{config.PROCESSED_DATA}/first_ten/x_test.parquet",
